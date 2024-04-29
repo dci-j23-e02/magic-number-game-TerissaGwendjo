@@ -16,7 +16,7 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @GetMapping("/start")
+    @GetMapping("/")
     public String startGame (Model model) {
         GameSession gameSession = gameService.startNewGame(); // This line invokes the startNewGame method of the gameService instance to start a new game. It assigns the returned GameSession object to the gameSession variable.
         model.addAttribute("gameSession", gameSession); // This line adds an attribute named "gameSession" to the model. The "gameSession" attribute holds the GameSession object created in the previous step. This allows the view to access and display information about the game session.
@@ -42,3 +42,9 @@ public class GameController {
 
 
 }
+
+
+
+/*
+* startGame(): This method handles GET requests to the "/" endpoint. It starts a new game session using the GameService, adds the game session to the model, and returns the name of the view to render. It appears that you're returning "start" as the view name, so Spring will render the "start" view in response to requests to the "/" endpoint.
+makeGuess(): This method handles GET requests to the "/guess" endpoint. It takes two request parameters, sessionId and guess, and passes them to the GameService to make a guess. The result of the guess is added to the model with the key "result", and the method returns "guess" as the view name. Presumably, there should be a "guess" view that displays the result of the guess to the user.*/
