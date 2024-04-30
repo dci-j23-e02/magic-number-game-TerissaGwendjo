@@ -19,7 +19,8 @@ public class GameController {
     @GetMapping("/")
     public String startGame (Model model) {
         GameSession gameSession = gameService.startNewGame(); // This line invokes the startNewGame method of the gameService instance to start a new game. It assigns the returned GameSession object to the gameSession variable.
-        model.addAttribute("gameSession", gameSession); // This line adds an attribute named "gameSession" to the model. The "gameSession" attribute holds the GameSession object created in the previous step. This allows the view to access and display information about the game session.
+        model.addAttribute("gameSession", gameSession.getId());// This line adds an attribute named "gameSession" to the model. The "gameSession" attribute holds the GameSession object created in the previous step. This allows the view to access and display information about the game session.
+        System.out.println(gameSession.getMagicNumber());
         return "start"; // This line returns the name of the view that should be rendered in response to the request. In this case, it returns "start", indicating that Spring should render the "start" view.
 
         /*
@@ -36,6 +37,12 @@ public class GameController {
     @GetMapping("/guess")
     public String makeGuess (@RequestParam Long sessionId, @RequestParam int guess, Model model) {
         String result = gameService.makeGuess(sessionId, guess);
+      /*  if (result.equals("Game session not found or not active.")) {
+            // Handle the error condition
+            // For example, redirect to the start page
+            return "redirect:/";
+        }*/
+
         model.addAttribute("result", result);
         return "guess";
     }

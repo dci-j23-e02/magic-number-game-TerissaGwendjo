@@ -8,8 +8,8 @@
 <body>
 <h1>Start New Game</h1>
 <form action="/guess" method="get">
-    <input type="hidden" name="sessionId" th:value="${gameSession.id}">
-    <label for="guess">Enter your guess:</label>
+    <input type="hidden" name="sessionId" th:value="${gameSession}">
+    <label for="guess" class="btn btn-outline-primary">Enter your guess:</label>
     <input type="number" id="guess" name="guess" required>
     <button type="submit">Submit Guess</button>
 </form>

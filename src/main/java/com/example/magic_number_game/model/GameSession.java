@@ -8,14 +8,13 @@ import jakarta.persistence.Id;
 
 @Entity
 public class GameSession {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int magicNumber;
     private boolean isActive;
 
-    // Contructors
+    // Constructors
     public GameSession() {
     }
 
@@ -25,6 +24,10 @@ public class GameSession {
     }
 
     //Getters and setters
+
+    public Long getId() {
+        return id;
+    }
     public int getMagicNumber() {
         return magicNumber;
     }
